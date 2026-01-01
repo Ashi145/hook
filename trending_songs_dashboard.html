@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Hook - Trending Songs Dashboard</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <!-- Theme Configuration -->
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f20df2",
+                        "background-light": "#f8f5f8",
+                        "background-dark": "#221022",
+                        "surface-dark": "#2d1b2d",
+                        "surface-light": "#ffffff",
+                    },
+                    fontFamily: {
+                        "display": ["Spline Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Material Symbols -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <style>
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            /* IE and Edge */
+            scrollbar-width: none;
+            /* Firefox */
+        }
+
+        .glass-panel {
+            background: rgba(34, 16, 34, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .neon-shadow {
+            box-shadow: 0 4px 20px -5px rgba(242, 13, 242, 0.4);
+        }
+    </style>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark min-h-screen font-display antialiased text-gray-900 dark:text-white overflow-x-hidden pb-32 selection:bg-primary selection:text-white">
+    <!-- Sticky Header -->
+    <div class="sticky top-0 z-40 w-full glass-panel border-b border-white/5">
+        <div class="flex items-center p-4 justify-between max-w-md mx-auto">
+            <div class="flex items-center gap-2">
+                <div class="text-primary flex size-8 shrink-0 items-center justify-center">
+                    <span class="material-symbols-outlined text-[32px]">graphic_eq</span>
+                </div>
+                <h1 class="text-white text-xl font-bold tracking-tighter uppercase">Hook</h1>
+            </div>
+            <div class="flex items-center gap-3">
+                <button
+                    class="flex items-center justify-center rounded-full size-10 bg-white/5 text-white hover:bg-white/10 transition-colors">
+                    <span class="material-symbols-outlined">search</span>
+                </button>
+                <div onclick="window.location.href='user_profile.html'"
+                    class="size-10 rounded-full bg-cover bg-center border-2 border-primary/30 cursor-pointer"
+                    data-alt="User profile avatar of a young woman"
+                    style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAYuQzPomJWA7-hs9cpK1S6aTuQHpdZgk-sFbyjxn4mmRc4NzhdZqf4XHKNOxoRKh9PcW8xbfj34VY3nsk2AO8pk9-fmcIke5ODrE2k4Hzd_Bd7CS6pYB3xqetpWiyk3f1ZtoqDuMysiQAV2tKnKJi3ZdQx8Fol6nZpnTIJ2zoeP3QBJrnVBscex0BuXxfBOL1B-4gTs95WqPFsUYYK-JDvRc0CGZJPpXloq0f2stk_Rf_TzsQFv_a3OBsGMVaN4HqstBQTWLbqywg');">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Main Content Wrapper -->
+    <div class="flex flex-col max-w-md mx-auto w-full">
+        <!-- Hero Section: Hot Right Now -->
+        <div class="pt-6 pb-2">
+            <div class="flex items-center justify-between px-5 mb-4">
+                <h2 class="text-white text-lg font-bold tracking-tight uppercase flex items-center gap-2">
+                    Viral Now <span
+                        class="material-symbols-outlined text-primary text-sm fill-1">local_fire_department</span>
+                </h2>
+                <a class="text-primary text-xs font-bold uppercase tracking-wider" href="#">View All</a>
+            </div>
+            <div class="flex overflow-x-auto no-scrollbar pb-4 pl-5 gap-4 snap-x snap-mandatory">
+                <!-- Card 1 -->
+                <div onclick="window.location.href='song_details.html'"
+                    class="flex flex-col gap-3 min-w-[260px] snap-center group relative cursor-pointer">
+                    <div class="w-full aspect-square rounded-xl bg-cover bg-center relative overflow-hidden shadow-2xl shadow-primary/10"
+                        data-alt="Abstract neon pink and blue fluid art representing music visualization"
+                        style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAoDy08ufzqj9W7Ur8Dq6H3xGd1bOj4ygIgR1w2siuTDs-Jb9PFxttfurLbL-X1rHbSjk-B__K8IiSYo7zpO9zhiPobLQGtDI4jrq4AYW5flBOVxro66NmibY2PxWS5TNkvuCBIV0UluEFlkoTd9zsZy5968735bqB3TsZXe5KwP4oTU1yw3GHJ2a6esU6IcIP_yaG7mkq5JbDTonGvp3DIAuabhBUNFAONTgKAB9EKXnxzc-JV5M0e_2bnWkdBwrVlX6_61KMi8dA');">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-90">
+                        </div>
+                        <div
+                            class="absolute top-3 left-3 bg-primary/90 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1 neon-shadow">
+                            <span class="material-symbols-outlined text-[14px]">trending_up</span> +400%
+                        </div>
+                        <div class="absolute bottom-4 left-4 right-4">
+                            <h3 class="text-white text-2xl font-bold leading-tight line-clamp-1">Speed Drive</h3>
+                            <p class="text-white/80 text-sm font-medium">Charli XCX</p>
+                        </div>
+                        <div
+                            class="absolute bottom-4 right-4 size-10 bg-white rounded-full flex items-center justify-center text-black opacity-0 group-hover:opacity-100 transition-opacity translate-y-2 group-hover:translate-y-0 duration-300">
+                            <span class="material-symbols-outlined fill-1">play_arrow</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div onclick="window.location.href='song_details.html'"
+                    class="flex flex-col gap-3 min-w-[260px] snap-center group relative cursor-pointer">
+                    <div class="w-full aspect-square rounded-xl bg-cover bg-center relative overflow-hidden shadow-2xl"
+                        data-alt="Dark moody portrait with red lighting effects"
+                        style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBil6H1Uf50NhieQZamCwiJ2AvMvVGLoAVqfm6P_-9mQdttGuhQrh4H6-_i-P7rlQox_UxjiG-D6rHt2xkra2tq5a7MwuxY1OzhtliQxVdvjan0r1xYO2Nfn8Bq9tXPQcZ_0kOb0v3WpfDGHCPS2yX-3QosUtfG29YkWyxAVDTukOIlq1Gjt7qaHj2BIuq0uI7O4-YTSo78AvadbJ5Y4nf6qby1xAlB_fz1rxJEX9iAZ__NLm_UYp6gBA7E74p43camx95rjzD-WPA');">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-90">
+                        </div>
+                        <div
+                            class="absolute top-3 left-3 bg-surface-dark/90 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1 border border-white/10">
+                            <span class="material-symbols-outlined text-[14px] text-primary">trending_up</span> +125%
+                        </div>
+                        <div class="absolute bottom-4 left-4 right-4">
+                            <h3 class="text-white text-2xl font-bold leading-tight line-clamp-1">Paint The Town Red</h3>
+                            <p class="text-white/80 text-sm font-medium">Doja Cat</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div onclick="window.location.href='song_details.html'"
+                    class="flex flex-col gap-3 min-w-[260px] snap-center group relative cursor-pointer">
+                    <div class="w-full aspect-square rounded-xl bg-cover bg-center relative overflow-hidden shadow-2xl"
+                        data-alt="Surreal landscape with floating geometric shapes"
+                        style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA3150dfZyGT0zRv1tXrdoIn0N6isk49eAoyFgOeBZOYRumUECg6XGaT0vZuqGd3OD3GolzbrSwyiVKNjSkL3YRugjiw21ODEit3afxaya6XKqA2bh5azdYGAGQv562Z-1mlmXrXTJT1k0AY5YXdw0GI1wrFaTOQWqgegUaEsxDrTAxlQ4VjjYRjS2SvujUkKwSL3WO6aN-dlWrA98P04l-TmPZQsZyEHr_ooygEZR6RuNnpv9FLbAWn7c9nZoigAGISF-F9OfA65o');">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-90">
+                        </div>
+                        <div
+                            class="absolute top-3 left-3 bg-surface-dark/90 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1 border border-white/10">
+                            <span class="material-symbols-outlined text-[14px] text-green-400">trending_flat</span>
+                            Stable
+                        </div>
+                        <div class="absolute bottom-4 left-4 right-4">
+                            <h3 class="text-white text-2xl font-bold leading-tight line-clamp-1">Strangers</h3>
+                            <p class="text-white/80 text-sm font-medium">Kenya Grace</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Filters -->
+        <div
+            class="flex overflow-x-auto no-scrollbar px-5 gap-3 py-4 sticky top-[72px] z-30 bg-background-dark/95 backdrop-blur-xl border-y border-white/5 mask-image-linear-to-r">
+            <button
+                class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary pl-5 pr-5 shadow-lg shadow-primary/20 transition-transform active:scale-95">
+                <p class="text-white text-sm font-bold leading-normal">For You</p>
+            </button>
+            <button
+                class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-surface-dark border border-white/10 hover:bg-white/5 pl-5 pr-5 transition-transform active:scale-95">
+                <p class="text-white/80 text-sm font-medium leading-normal">Global</p>
+            </button>
+            <button
+                class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-surface-dark border border-white/10 hover:bg-white/5 pl-5 pr-5 transition-transform active:scale-95">
+                <p class="text-white/80 text-sm font-medium leading-normal">Emerging</p>
+            </button>
+            <button
+                class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-surface-dark border border-white/10 hover:bg-white/5 pl-5 pr-5 transition-transform active:scale-95">
+                <p class="text-white/80 text-sm font-medium leading-normal">Hip-Hop</p>
+            </button>
+            <button
+                class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-surface-dark border border-white/10 hover:bg-white/5 pl-5 pr-5 transition-transform active:scale-95">
+                <p class="text-white/80 text-sm font-medium leading-normal">Electronic</p>
+            </button>
+        </div>
+        <!-- Trending List -->
+        <div class="px-5 pt-6 flex flex-col gap-2">
+            <div class="flex items-center justify-between mb-2">
+                <h2 class="text-white text-lg font-bold tracking-tight uppercase">Trending Stream</h2>
+                <div class="flex gap-1">
+                    <span class="size-1.5 rounded-full bg-primary animate-pulse"></span>
+                    <span class="text-[10px] text-primary font-bold uppercase tracking-wider">Live Updates</span>
+                </div>
+            </div>
+            <!-- List Item 1 -->
+            <div onclick="window.location.href='song_details.html'"
+                class="group flex items-center gap-4 py-3 border-b border-white/5 active:bg-white/5 transition-colors rounded-xl px-2 -mx-2 cursor-pointer">
+                <div class="text-white/40 text-lg font-bold w-4 text-center font-mono">1</div>
+                <div class="relative shrink-0">
+                    <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-xl size-14 shadow-lg group-hover:scale-105 transition-transform duration-300"
+                        data-alt="Abstract water ripples with blue lighting"
+                        style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBHos-9ZAyd0SxGVY7xmp9hDZpjb0kwfMcCW6mWiTXsX1MKp86iC7MgQXIyyPUUMBmpkIVrCdCq6IPkl9GFUtI9W3EH6aQLHqm-extuUmaeKqn5pCW7spYrffwFAjaRp-qnJuhijLlhYnFrrx-G4CGIyvyKqr7hdCN35O13FzrwZHDdr3GTUnfxESADW9ZL4raJVM61ddw04aVFQmFDXGM8-XyMiyqUVWv3tgJu0vdPbrvPwSNC14G65zYQTpMqZb0iddkSl51fvgw');">
+                    </div>
+                    <div class="absolute -bottom-1 -right-1 bg-black rounded-full p-0.5 border border-white/10">
+                        <div class="bg-white rounded-full size-4 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-[10px] text-black">music_note</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-col justify-center flex-1 min-w-0">
+                    <div class="flex items-center gap-2">
+                        <p class="text-white text-base font-bold leading-normal truncate">Water</p>
+                        <span
+                            class="material-symbols-outlined text-primary text-[16px] animate-bounce">local_fire_department</span>
+                    </div>
+                    <p class="text-gray-400 text-sm font-normal leading-normal truncate">Tyla • 2.4M Uses</p>
+                </div>
+                <div class="shrink-0">
+                    <button
+                        class="flex cursor-pointer items-center justify-center overflow-hidden rounded-full h-9 px-5 bg-primary/20 hover:bg-primary text-primary hover:text-white transition-all text-sm font-bold w-fit active:scale-95">
+                        <span>Use</span>
+                    </button>
+                </div>
+            </div>
+            <!-- List Item 2 -->
+            <div onclick="window.location.href='song_details.html'"
+                class="group flex items-center gap-4 py-3 border-b border-white/5 active:bg-white/5 transition-colors rounded-xl px-2 -mx-2 cursor-pointer">
+                <div class="text-white/40 text-lg font-bold w-4 text-center font-mono">2</div>
+                <div class="relative shrink-0">
+                    <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-xl size-14 shadow-lg group-hover:scale-105 transition-transform duration-300"
+                        data-alt="Retro vaporwave style sunset with palm trees"
+                        style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAje99MqlHeacKKpre_gfntaEEshUF9ijlPe4mBcDEYpaJh7udsOjzauXhOrZpDw9i0T4d_a3FU1zCArSjypI1XOmFt306OAhlfzR9e6B4WTuuQUF316A6wfRQbdbPyZPJ0sPIQ9g12j_ouW6VRoc_UutV1hJ4BeojBlyFl1Fb9UNzHDNGyOMN1mgzTjPh_A7X5LT8-vIctg9wnJJBdVWJSYXa-k_t4N5mmuU8QseBC3wpzPSlM3B5J_UsdURYO-CtkBDSJmqSn8_Y');">
+                    </div>
+                </div>
+                <div class="flex flex-col justify-center flex-1 min-w-0">
+                    <div class="flex items-center gap-2">
+                        <p class="text-white text-base font-bold leading-normal truncate">Greedy</p>
+                        <span class="material-symbols-outlined text-green-400 text-[16px]">trending_up</span>
+                    </div>
+                    <p class="text-gray-400 text-sm font-normal leading-normal truncate">Tate McRae • 1.1M Uses</p>
+                </div>
+                <div class="shrink-0">
+                    <button
+                        class="flex cursor-pointer items-center justify-center overflow-hidden rounded-full h-9 px-5 bg-surface-dark border border-white/10 hover:border-primary/50 text-white transition-all text-sm font-bold w-fit active:scale-95">
+                        <span>Use</span>
+                    </button>
+                </div>
+            </div>
+            <!-- List Item 3 -->
+            <div onclick="window.location.href='song_details.html'"
+                class="group flex items-center gap-4 py-3 border-b border-white/5 active:bg-white/5 transition-colors rounded-xl px-2 -mx-2 cursor-pointer">
+                <div class="text-white/40 text-lg font-bold w-4 text-center font-mono">3</div>
+                <div class="relative shrink-0">
+                    <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-xl size-14 shadow-lg group-hover:scale-105 transition-transform duration-300"
+                        data-alt="Concert crowd with bright stage lights"
+                        style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA2Fc8YeV4ILV-b1232hnoVIhIrKEEOTNLtcQXYgDgejrNFApwrOG91h_h8Q3toyVsGDhX0r9M3h3sV5vphzTiVC7zk53Vhx0wSJBwrUPg6Cxh8VX_Rgheb_J10Mz9v40zrGju99dKwqZ3r9ShzWXOL05fyUP1SloLpXb5_jVdX-DLg-aFDsAqQZdXST9MDjMuZJuiQ5CdZHHfB_rHKtfMphnTJlxUEcG2U9fv4uZRv5wgNV2SdG9eOmkTX0dZ2VT1PT5oRxmrWt_8');">
+                    </div>
+                </div>
+                <div class="flex flex-col justify-center flex-1 min-w-0">
+                    <div class="flex items-center gap-2">
+                        <p class="text-white text-base font-bold leading-normal truncate">Lovin On Me</p>
+                        <span class="material-symbols-outlined text-green-400 text-[16px]">trending_up</span>
+                    </div>
+                    <p class="text-gray-400 text-sm font-normal leading-normal truncate">Jack Harlow • 850K Uses</p>
+                </div>
+                <div class="shrink-0">
+                    <button
+                        class="flex cursor-pointer items-center justify-center overflow-hidden rounded-full h-9 px-5 bg-surface-dark border border-white/10 hover:border-primary/50 text-white transition-all text-sm font-bold w-fit active:scale-95">
+                        <span>Use</span>
+                    </button>
+                </div>
+            </div>
+            <!-- List Item 4 -->
+            <div onclick="window.location.href='song_details.html'"
+                class="group flex items-center gap-4 py-3 border-b border-white/5 active:bg-white/5 transition-colors rounded-xl px-2 -mx-2 cursor-pointer">
+                <div class="text-white/40 text-lg font-bold w-4 text-center font-mono">4</div>
+                <div class="relative shrink-0">
+                    <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-xl size-14 shadow-lg group-hover:scale-105 transition-transform duration-300"
+                        data-alt="Microphone on stand with bokeh background"
+                        style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAU1i_KWU3a_6MsxLekKYyF66L-QBLnlztoo1i1ZJw9n2V0P-yhJcv_S0bQvT83sNZvkbNa55Jjdfifs3zpRdAmu3sDP8cPjsb5AaRJAXS3XkrhmeM0AvVtY29F57-EWpKaxrqyGGJtt92k0UNJERwIEk-FxqOLgKaP5EjOB5mkGVzAVbUnvAAzdHDqkSvaKvx50LcHce4OuxwaUYx1nBhceQ7x9qN7hXShb5IjFK7CM40BLiEHkvvFftS-_m2wTwvzy8D7Gvd_2sQ');">
+                    </div>
+                </div>
+                <div class="flex flex-col justify-center flex-1 min-w-0">
+                    <div class="flex items-center gap-2">
+                        <p class="text-white text-base font-bold leading-normal truncate">Cruel Summer</p>
+                    </div>
+                    <p class="text-gray-400 text-sm font-normal leading-normal truncate">Taylor Swift • 500K Uses</p>
+                </div>
+                <div class="shrink-0">
+                    <button
+                        class="flex cursor-pointer items-center justify-center overflow-hidden rounded-full h-9 px-5 bg-surface-dark border border-white/10 hover:border-primary/50 text-white transition-all text-sm font-bold w-fit active:scale-95">
+                        <span>Use</span>
+                    </button>
+                </div>
+            </div>
+            <!-- List Item 5 -->
+            <div onclick="window.location.href='song_details.html'"
+                class="group flex items-center gap-4 py-3 border-b border-white/5 active:bg-white/5 transition-colors rounded-xl px-2 -mx-2 cursor-pointer">
+                <div class="text-white/40 text-lg font-bold w-4 text-center font-mono">5</div>
+                <div class="relative shrink-0">
+                    <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-xl size-14 shadow-lg group-hover:scale-105 transition-transform duration-300"
+                        data-alt="Surreal purple clouds and stars"
+                        style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBuT4CtuqmVY0Tm4xnIfX-II10xXNAqSopSHypk2cVDyNiWLtDzYhAmHEkU_xE24w4UVSJOr46ZefCLFZSuaBajRMTJGfxJJfdZTRuvMM-klJPsiLo84IS4MqqCyARYH8fp44_7LXUSVnhVa00-vtXxJ2ZmLtwbJEV5pTM4Zw09wiR7Jy4BJuBdCLQDGKwmSfIq-cvuedmE0yAMt0Qg2l4dx0MEQgUHmLX-HHosRgmtg_S916n3LWSGkct1xoEJDDU-ktfaDt3oS00');">
+                    </div>
+                </div>
+                <div class="flex flex-col justify-center flex-1 min-w-0">
+                    <div class="flex items-center gap-2">
+                        <p class="text-white text-base font-bold leading-normal truncate">Daylight</p>
+                        <span class="material-symbols-outlined text-green-400 text-[16px]">trending_up</span>
+                    </div>
+                    <p class="text-gray-400 text-sm font-normal leading-normal truncate">David Kushner • 420K Uses</p>
+                </div>
+                <div class="shrink-0">
+                    <button
+                        class="flex cursor-pointer items-center justify-center overflow-hidden rounded-full h-9 px-5 bg-surface-dark border border-white/10 hover:border-primary/50 text-white transition-all text-sm font-bold w-fit active:scale-95">
+                        <span>Use</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Floating Action Button -->
+    <div class="fixed bottom-24 right-6 z-50">
+        <button onclick="window.location.href='add_music.html'"
+            class="flex items-center justify-center size-14 rounded-full bg-primary text-white shadow-lg neon-shadow hover:scale-110 transition-transform duration-300 active:scale-90">
+            <span class="material-symbols-outlined text-[28px]">add</span>
+        </button>
+    </div>
+    <!-- Bottom Navigation -->
+    <div class="fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] max-w-[400px] z-50">
+        <div class="glass-panel rounded-full h-16 px-6 flex items-center justify-between shadow-2xl">
+            <button onclick="window.location.href='trending_songs_dashboard.html'"
+                class="flex flex-col items-center justify-center gap-1 text-primary w-12 group">
+                <span class="material-symbols-outlined fill-1">home</span>
+            </button>
+            <button onclick="window.location.href='search.html'"
+                class="flex flex-col items-center justify-center gap-1 text-white/50 hover:text-white w-12 transition-colors group">
+                <span class="material-symbols-outlined">search</span>
+            </button>
+            <button onclick="window.location.href='favorites.html'"
+                class="flex flex-col items-center justify-center gap-1 text-white/50 hover:text-white w-12 transition-colors group">
+                <span class="material-symbols-outlined">favorite</span>
+            </button>
+            <button onclick="window.location.href='stats.html'"
+                class="flex flex-col items-center justify-center gap-1 text-white/50 hover:text-white w-12 transition-colors group">
+                <span class="material-symbols-outlined">bar_chart</span>
+            </button>
+        </div>
+    </div>
+</body>
+
+</html>

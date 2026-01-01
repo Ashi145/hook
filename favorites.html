@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Hook - Favorites</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f20df2",
+                        "background-light": "#f8f5f8",
+                        "background-dark": "#221022",
+                        "surface-dark": "#2d1b2d",
+                    },
+                    fontFamily: {
+                        "display": ["Spline Sans", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <style>
+        .glass-panel {
+            background: rgba(34, 16, 34, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark min-h-screen font-display antialiased text-gray-900 dark:text-white overflow-x-hidden pb-32">
+    <!-- Header -->
+    <div class="sticky top-0 z-40 w-full glass-panel border-b border-white/5">
+        <div class="flex items-center p-4 justify-between max-w-md mx-auto">
+            <h1 class="text-white text-xl font-bold tracking-tighter uppercase">Favorites</h1>
+            <span class="material-symbols-outlined text-primary fill-1">favorite</span>
+        </div>
+    </div>
+
+    <!-- Content -->
+    <div class="flex flex-col max-w-md mx-auto w-full px-5 pt-6 gap-4">
+        <!-- Mock Favorite Item 1 -->
+        <div onclick="window.location.href='song_details.html'"
+            class="group flex items-center gap-4 py-3 border-b border-white/5 active:bg-white/5 transition-colors rounded-xl px-2 -mx-2 cursor-pointer">
+            <div class="relative shrink-0">
+                <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-xl size-14 shadow-lg"
+                    style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAoDy08ufzqj9W7Ur8Dq6H3xGd1bOj4ygIgR1w2siuTDs-Jb9PFxttfurLbL-X1rHbSjk-B__K8IiSYo7zpO9zhiPobLQGtDI4jrq4AYW5flBOVxro66NmibY2PxWS5TNkvuCBIV0UluEFlkoTd9zsZy5968735bqB3TsZXe5KwP4oTU1yw3GHJ2a6esU6IcIP_yaG7mkq5JbDTonGvp3DIAuabhBUNFAONTgKAB9EKXnxzc-JV5M0e_2bnWkdBwrVlX6_61KMi8dA');">
+                </div>
+            </div>
+            <div class="flex flex-col justify-center flex-1 min-w-0">
+                <p class="text-white text-base font-bold leading-normal truncate">Speed Drive</p>
+                <p class="text-gray-400 text-sm font-normal truncate">Charli XCX</p>
+            </div>
+            <span class="material-symbols-outlined text-primary fill-1">favorite</span>
+        </div>
+
+        <!-- Mock Favorite Item 2 -->
+        <div onclick="window.location.href='song_details.html'"
+            class="group flex items-center gap-4 py-3 border-b border-white/5 active:bg-white/5 transition-colors rounded-xl px-2 -mx-2 cursor-pointer">
+            <div class="relative shrink-0">
+                <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-xl size-14 shadow-lg"
+                    style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBil6H1Uf50NhieQZamCwiJ2AvMvVGLoAVqfm6P_-9mQdttGuhQrh4H6-_i-P7rlQox_UxjiG-D6rHt2xkra2tq5a7MwuxY1OzhtliQxVdvjan0r1xYO2Nfn8Bq9tXPQcZ_0kOb0v3WpfDGHCPS2yX-3QosUtfG29YkWyxAVDTukOIlq1Gjt7qaHj2BIuq0uI7O4-YTSo78AvadbJ5Y4nf6qby1xAlB_fz1rxJEX9iAZ__NLm_UYp6gBA7E74p43camx95rjzD-WPA');">
+                </div>
+            </div>
+            <div class="flex flex-col justify-center flex-1 min-w-0">
+                <p class="text-white text-base font-bold leading-normal truncate">Paint The Town Red</p>
+                <p class="text-gray-400 text-sm font-normal truncate">Doja Cat</p>
+            </div>
+            <span class="material-symbols-outlined text-primary fill-1">favorite</span>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <div class="fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] max-w-[400px] z-50">
+        <div class="glass-panel rounded-full h-16 px-6 flex items-center justify-between shadow-2xl">
+            <button onclick="window.location.href='trending_songs_dashboard.html'"
+                class="flex flex-col items-center justify-center gap-1 text-white/50 hover:text-white w-12 transition-colors group">
+                <span class="material-symbols-outlined">home</span>
+            </button>
+            <button onclick="window.location.href='search.html'"
+                class="flex flex-col items-center justify-center gap-1 text-white/50 hover:text-white w-12 transition-colors group">
+                <span class="material-symbols-outlined">search</span>
+            </button>
+            <button onclick="window.location.href='favorites.html'"
+                class="flex flex-col items-center justify-center gap-1 text-primary w-12 group">
+                <span class="material-symbols-outlined fill-1">favorite</span>
+            </button>
+            <button onclick="window.location.href='stats.html'"
+                class="flex flex-col items-center justify-center gap-1 text-white/50 hover:text-white w-12 transition-colors group">
+                <span class="material-symbols-outlined">bar_chart</span>
+            </button>
+        </div>
+    </div>
+</body>
+
+</html>

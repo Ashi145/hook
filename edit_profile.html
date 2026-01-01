@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Hook - Edit Profile</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f20df2",
+                        "background-light": "#f8f5f8",
+                        "background-dark": "#221022",
+                        "surface-dark": "#2d1b2d",
+                    },
+                    fontFamily: {
+                        "display": ["Spline Sans", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <style>
+        .glass-panel {
+            background: rgba(34, 16, 34, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Toggle Switch */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #f20df2;
+        }
+
+        .toggle-checkbox:checked+.toggle-label {
+            background-color: #f20df2;
+        }
+    </style>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark min-h-screen font-display antialiased text-gray-900 dark:text-white overflow-x-hidden pb-32">
+    <!-- Header -->
+    <div class="sticky top-0 z-40 w-full glass-panel border-b border-white/5">
+        <div class="flex items-center p-4 justify-between max-w-md mx-auto">
+            <button onclick="window.location.href='user_profile.html'"
+                class="flex items-center justify-center rounded-full size-10 bg-white/5 hover:bg-white/10 transition-colors text-white">
+                <span class="material-symbols-outlined">arrow_back</span>
+            </button>
+            <h1 class="text-white text-xl font-bold tracking-tighter uppercase">Edit Profile</h1>
+            <button onclick="saveProfile()" class="text-primary font-bold text-sm">Save</button>
+        </div>
+    </div>
+
+    <!-- Content -->
+    <div class="flex flex-col max-w-md mx-auto w-full px-5 pt-6 gap-8">
+
+        <!-- Profile Picture -->
+        <div class="flex flex-col items-center gap-4">
+            <div class="relative group">
+                <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-32 w-32 border-4 border-surface-dark"
+                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC_W5Gj5aHyavb7EBX6ZdkwE_ch6mGZOba6WK0irbJep_pqDkR-hFFSiMv8VpHUFVJm5FoXx6vLHKkzrpiEExXC5QqZl1Hfoqe9uiyKM8plDhWlTVjCJm7G_SMK6VSMFM3ZpvldAfUaM3gJIPL-I0yIblq2UXKC3sFqGn0tJ6Z7TcBX_tHDEw5ImkA-O4iv2tu8jXEzwZZ-RGiK1YGD7a0bXUkxQlYQKfWMkYE7RqsQDKBg3X8Gn7V-F1AlB5LHSte6thLIzOVaH74");'>
+                </div>
+                <div
+                    class="absolute inset-0 flex items-center justify-center bg-black/50 rounded-full opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer">
+                    <span class="material-symbols-outlined text-white">photo_camera</span>
+                </div>
+            </div>
+            <p class="text-primary text-sm font-bold">Change Photo</p>
+        </div>
+
+        <!-- Information Form -->
+        <div class="flex flex-col gap-4">
+            <div class="flex flex-col gap-1">
+                <label class="text-white/50 text-xs font-bold uppercase tracking-wider pl-2">Display Name</label>
+                <input type="text" value="Alex Rivera"
+                    class="bg-surface-dark border border-white/10 rounded-xl px-4 py-3 text-white focus:border-primary focus:ring-primary placeholder-white/20">
+            </div>
+
+            <div class="flex flex-col gap-1">
+                <label class="text-white/50 text-xs font-bold uppercase tracking-wider pl-2">Socials</label>
+                <div class="flex items-center gap-2 bg-surface-dark border border-white/10 rounded-xl px-4 py-3">
+                    <span class="text-white/50">tiktok.com/@</span>
+                    <input type="text" value="ariveramusic"
+                        class="bg-transparent border-none p-0 text-white focus:ring-0 w-full placeholder-white/20">
+                </div>
+                <div class="flex items-center gap-2 bg-surface-dark border border-white/10 rounded-xl px-4 py-3 mt-2">
+                    <span class="text-white/50">instagram.com/</span>
+                    <input type="text" value="alex_r_music"
+                        class="bg-transparent border-none p-0 text-white focus:ring-0 w-full placeholder-white/20">
+                </div>
+            </div>
+        </div>
+
+        <!-- Theme Toggle -->
+        <div class="flex items-center justify-between p-4 bg-surface-dark rounded-xl border border-white/5">
+            <div class="flex items-center gap-3">
+                <div class="size-10 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center">
+                    <span class="material-symbols-outlined">dark_mode</span>
+                </div>
+                <div>
+                    <p class="text-white font-bold">Dark Mode</p>
+                    <p class="text-white/50 text-xs">Adjust app appearance</p>
+                </div>
+            </div>
+            <div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+                <input type="checkbox" name="toggle" id="theme-toggle"
+                    class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer checked:right-0 checked:border-primary transition-all duration-300"
+                    checked />
+                <label for="theme-toggle"
+                    class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-700 cursor-pointer checked:bg-primary transition-colors"></label>
+            </div>
+        </div>
+
+        <!-- Subscription -->
+        <div class="flex flex-col gap-2">
+            <p class="text-white/50 text-xs font-bold uppercase tracking-wider pl-2">Subscription</p>
+            <div class="p-4 bg-gradient-to-br from-primary/20 to-purple-900/40 rounded-xl border border-primary/30">
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <p class="text-primary font-bold text-lg">Pro Plan</p>
+                        <p class="text-white/70 text-sm">$9.99/month</p>
+                    </div>
+                    <span
+                        class="bg-primary text-white text-[10px] font-bold px-2 py-1 rounded-full uppercase">Active</span>
+                </div>
+                <p class="text-white/50 text-xs mb-4">Next billing date: Feb 2, 2026</p>
+                <button
+                    class="w-full py-2 bg-white/10 hover:bg-white/20 rounded-lg text-white text-sm font-bold transition-colors">Manage
+                    Payment Method</button>
+            </div>
+        </div>
+
+        <!-- Music Preferences -->
+        <div class="flex flex-col gap-3">
+            <p class="text-white/50 text-xs font-bold uppercase tracking-wider pl-2">Music Preferences</p>
+            <div class="flex flex-wrap gap-2">
+                <label class="cursor-pointer select-none">
+                    <input type="checkbox" checked class="peer sr-only" />
+                    <div
+                        class="px-4 py-2 rounded-full bg-surface-dark border border-white/10 text-white/70 peer-checked:bg-primary peer-checked:text-white peer-checked:border-primary transition-all text-sm font-medium">
+                        Pop</div>
+                </label>
+                <label class="cursor-pointer select-none">
+                    <input type="checkbox" class="peer sr-only" />
+                    <div
+                        class="px-4 py-2 rounded-full bg-surface-dark border border-white/10 text-white/70 peer-checked:bg-primary peer-checked:text-white peer-checked:border-primary transition-all text-sm font-medium">
+                        Hip-Hop</div>
+                </label>
+                <label class="cursor-pointer select-none">
+                    <input type="checkbox" checked class="peer sr-only" />
+                    <div
+                        class="px-4 py-2 rounded-full bg-surface-dark border border-white/10 text-white/70 peer-checked:bg-primary peer-checked:text-white peer-checked:border-primary transition-all text-sm font-medium">
+                        Electronic</div>
+                </label>
+                <label class="cursor-pointer select-none">
+                    <input type="checkbox" class="peer sr-only" />
+                    <div
+                        class="px-4 py-2 rounded-full bg-surface-dark border border-white/10 text-white/70 peer-checked:bg-primary peer-checked:text-white peer-checked:border-primary transition-all text-sm font-medium">
+                        R&B</div>
+                </label>
+                <label class="cursor-pointer select-none">
+                    <input type="checkbox" class="peer sr-only" />
+                    <div
+                        class="px-4 py-2 rounded-full bg-surface-dark border border-white/10 text-white/70 peer-checked:bg-primary peer-checked:text-white peer-checked:border-primary transition-all text-sm font-medium">
+                        Indie</div>
+                </label>
+            </div>
+        </div>
+
+        <!-- Terms & Conditions -->
+        <div class="py-4 border-t border-white/10">
+            <a href="#" class="flex items-center justify-between text-white/70 hover:text-white transition-colors">
+                <span class="text-sm font-bold">Terms & Conditions</span>
+                <span class="material-symbols-outlined text-sm">open_in_new</span>
+            </a>
+        </div>
+
+    </div>
+
+    <script>
+        // Toggle Theme Logic
+        const toggle = document.getElementById('theme-toggle');
+        const html = document.querySelector('html');
+
+        toggle.addEventListener('change', function () {
+            if (this.checked) {
+                html.classList.add('dark');
+            } else {
+                html.classList.remove('dark');
+            }
+        });
+
+        function saveProfile() {
+            // Mock Save
+            const saveBtn = document.querySelector('button.text-primary');
+            const originalText = saveBtn.innerText;
+
+            saveBtn.innerText = 'Saved!';
+            setTimeout(() => {
+                saveBtn.innerText = originalText;
+                // Redirect back optionally, or just stay
+                // window.location.href = 'user_profile.html';
+            }, 1000);
+        }
+    </script>
+</body>
+
+</html>

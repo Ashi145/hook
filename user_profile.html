@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Hook - User Profile</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Material Symbols -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <!-- Theme Configuration -->
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f20df2",
+                        "primary-dim": "#b50ab5",
+                        "background-light": "#f8f5f8",
+                        "background-dark": "#221022",
+                        "surface-dark": "#2d152d",
+                    },
+                    fontFamily: {
+                        "display": ["Spline Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        "neon": "0 0 10px rgba(242, 13, 242, 0.5), 0 0 20px rgba(242, 13, 242, 0.3)",
+                        "neon-sm": "0 0 5px rgba(242, 13, 242, 0.4)",
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        /* Custom scrollbar hiding for clean UI */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white antialiased selection:bg-primary selection:text-white">
+    <div
+        class="relative flex h-full min-h-screen w-full flex-col overflow-x-hidden max-w-md mx-auto shadow-2xl bg-background-light dark:bg-background-dark">
+        <!-- TopAppBar -->
+        <div
+            class="sticky top-0 z-50 flex items-center bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md p-4 pb-2 justify-between">
+            <div onclick="window.location.href='trending_songs_dashboard.html'"
+                class="flex size-10 shrink-0 items-center justify-center rounded-full hover:bg-surface-dark transition-colors cursor-pointer">
+                <span class="material-symbols-outlined text-slate-900 dark:text-white"
+                    style="font-size: 24px;">arrow_back</span>
+            </div>
+            <h2
+                class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">
+                Profile</h2>
+            <div class="flex w-10 items-center justify-end">
+                <button
+                    class="flex size-10 cursor-pointer items-center justify-center rounded-full bg-transparent hover:bg-surface-dark transition-colors text-slate-900 dark:text-white">
+                    <span class="material-symbols-outlined" style="font-size: 24px;">settings</span>
+                </button>
+            </div>
+        </div>
+        <!-- ProfileHeader -->
+        <div class="flex p-4 pb-0 flex-col gap-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
+            <div class="flex w-full flex-col gap-5 items-center">
+                <!-- Avatar with Neon Glow -->
+                <div class="flex gap-4 flex-col items-center">
+                    <div class="relative group cursor-pointer">
+                        <div
+                            class="absolute -inset-1 bg-gradient-to-r from-primary to-purple-600 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-500">
+                        </div>
+                        <div class="relative bg-center bg-no-repeat aspect-square bg-cover rounded-full h-32 w-32 border-4 border-background-dark"
+                            data-alt="Digital art portrait of a young musician with neon lighting"
+                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC_W5Gj5aHyavb7EBX6ZdkwE_ch6mGZOba6WK0irbJep_pqDkR-hFFSiMv8VpHUFVJm5FoXx6vLHKkzrpiEExXC5QqZl1Hfoqe9uiyKM8plDhWlTVjCJm7G_SMK6VSMFM3ZpvldAfUaM3gJIPL-I0yIblq2UXKC3sFqGn0tJ6Z7TcBX_tHDEw5ImkA-O4iv2tu8jXEzwZZ-RGiK1YGD7a0bXUkxQlYQKfWMkYE7RqsQDKBg3X8Gn7V-F1AlB5LHSte6thLIzOVaH74");'>
+                        </div>
+                        <div
+                            class="absolute bottom-1 right-1 bg-primary text-white rounded-full p-1.5 border-4 border-background-dark flex items-center justify-center">
+                            <span class="material-symbols-outlined text-[16px]">edit</span>
+                        </div>
+                    </div>
+                    <div class="flex flex-col items-center justify-center">
+                        <p
+                            class="text-slate-900 dark:text-white text-[26px] font-bold leading-tight tracking-[-0.015em] text-center">
+                            Alex Rivera</p>
+                        <p
+                            class="text-primary/80 dark:text-primary/80 text-base font-medium leading-normal text-center mt-1">
+                            @ariveramusic</p>
+                    </div>
+                </div>
+                <!-- Action Buttons -->
+                <div class="flex w-full gap-3">
+                    <button onclick="window.location.href='edit_profile.html'"
+                        class="flex-1 cursor-pointer items-center justify-center overflow-hidden rounded-full h-12 px-6 bg-primary hover:bg-primary-dim text-white text-sm font-bold tracking-wide transition-all shadow-neon-sm active:scale-95">
+                        <span class="truncate">Edit Profile</span>
+                    </button>
+                    <button onclick="shareProfile()"
+                        class="flex-1 cursor-pointer items-center justify-center overflow-hidden rounded-full h-12 px-6 bg-surface-dark border border-white/10 hover:bg-white/10 text-white text-sm font-bold tracking-wide transition-all active:scale-95">
+                        <span class="truncate">Share</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <script>
+            function shareProfile() {
+                if (navigator.share) {
+                    navigator.share({
+                        title: 'Check out Alex Rivera on Hook!',
+                        text: 'Listen to the latest hooks from my profile.',
+                        url: window.location.href,
+                    })
+                        .then(() => console.log('Successful share'))
+                        .catch((error) => console.log('Error sharing', error));
+                } else {
+                    // Fallback for browsers that don't support Web Share API
+                    navigator.clipboard.writeText(window.location.href);
+                    alert("Link copied to clipboard!");
+                }
+            }
+        </script>
+        <!-- ProfileStats -->
+        <div class="flex gap-3 px-4 py-6 overflow-x-auto no-scrollbar">
+            <div
+                class="flex min-w-[100px] flex-1 flex-col gap-1 rounded-2xl bg-surface-dark border border-white/5 p-4 items-center text-center hover:border-primary/30 transition-colors cursor-default">
+                <p class="text-white tracking-tight text-2xl font-bold leading-tight">1.2M</p>
+                <p class="text-gray-400 text-xs font-medium uppercase tracking-wider">Streams</p>
+            </div>
+            <div
+                class="flex min-w-[100px] flex-1 flex-col gap-1 rounded-2xl bg-surface-dark border border-white/5 p-4 items-center text-center hover:border-primary/30 transition-colors cursor-default">
+                <p class="text-white tracking-tight text-2xl font-bold leading-tight">45</p>
+                <p class="text-gray-400 text-xs font-medium uppercase tracking-wider">Hooks</p>
+            </div>
+            <div
+                class="flex min-w-[100px] flex-1 flex-col gap-1 rounded-2xl bg-surface-dark border border-white/5 p-4 items-center text-center hover:border-primary/30 transition-colors cursor-default">
+                <p class="text-white tracking-tight text-2xl font-bold leading-tight">12k</p>
+                <p class="text-gray-400 text-xs font-medium uppercase tracking-wider">Fans</p>
+            </div>
+        </div>
+        <!-- Tabs -->
+        <div class="sticky top-[68px] z-40 bg-background-light dark:bg-background-dark pt-2">
+            <div class="flex border-b border-white/10 px-4 justify-between">
+                <button
+                    class="group flex flex-col items-center justify-center border-b-[3px] border-b-transparent pb-3 pt-2 flex-1 hover:text-white transition-colors">
+                    <p class="text-gray-400 group-hover:text-white text-sm font-bold tracking-wide">Activity</p>
+                </button>
+                <button
+                    class="flex flex-col items-center justify-center border-b-[3px] border-b-primary pb-3 pt-2 flex-1">
+                    <p class="text-primary text-sm font-bold tracking-wide shadow-neon-sm">Saved Trends</p>
+                </button>
+                <button
+                    class="group flex flex-col items-center justify-center border-b-[3px] border-b-transparent pb-3 pt-2 flex-1 hover:text-white transition-colors">
+                    <p class="text-gray-400 group-hover:text-white text-sm font-bold tracking-wide">My Hooks</p>
+                </button>
+            </div>
+        </div>
+        <!-- Saved Trends List -->
+        <div class="flex flex-col gap-2 p-4 min-h-[300px]">
+            <p class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-2 pl-2">This Week</p>
+            <!-- List Item 1 -->
+            <div
+                class="group flex items-center gap-4 bg-surface-dark hover:bg-white/5 rounded-2xl p-3 pr-4 transition-all cursor-pointer border border-transparent hover:border-primary/20">
+                <div class="relative shrink-0">
+                    <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-xl size-16 shadow-lg group-hover:scale-105 transition-transform duration-300"
+                        data-alt="Abstract neon purple and blue album cover art"
+                        style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDtYlSgfD4iSWct_XIqYByuJ-D7wMDW3i8LqvS1BjLmGubg1ityrSc5QmFASC8D3NHiPNVFO4o_EO6aoklOqlsYqIrSDIMJAit1KqtSOTpN0MlJzu7siJMHfaoZYYGWQ8dcsQgpFHGCkyF1tt3N4J3j1Jt6WqRca0n2r0AWHHaZvLpZmUi4y1kpo-okUdekXnEWEvB6hRfVgVNVJggN5v-Y7zr_krfpw38j1_XoD237rDHZ4mw08mPzYRiSmfzWQ5QEBXGgmBh5TA4");'>
+                    </div>
+                    <div
+                        class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 rounded-xl transition-opacity">
+                        <span class="material-symbols-outlined text-white" style="font-size: 24px;">play_arrow</span>
+                    </div>
+                </div>
+                <div class="flex flex-col justify-center flex-1 min-w-0">
+                    <div class="flex justify-between items-start">
+                        <p class="text-white text-base font-bold leading-tight truncate pr-2">Sped Up - Nightcore Remix
+                        </p>
+                        <span
+                            class="text-[10px] font-bold bg-green-500/20 text-green-400 px-2 py-0.5 rounded-full whitespace-nowrap">98%
+                            Viral</span>
+                    </div>
+                    <p class="text-gray-400 text-sm font-normal leading-normal truncate mt-1">Dj Spark • 2.4M Views</p>
+                </div>
+                <div class="shrink-0 text-primary opacity-0 group-hover:opacity-100 transition-opacity">
+                    <span class="material-symbols-outlined filled" style="font-size: 24px;">equalizer</span>
+                </div>
+            </div>
+            <!-- List Item 2 -->
+            <div
+                class="group flex items-center gap-4 bg-surface-dark hover:bg-white/5 rounded-2xl p-3 pr-4 transition-all cursor-pointer border border-transparent hover:border-primary/20">
+                <div class="relative shrink-0">
+                    <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-xl size-16 shadow-lg group-hover:scale-105 transition-transform duration-300"
+                        data-alt="Lo-fi aesthetic anime style album art with rain"
+                        style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAQi0m2IIWVSzVGZHhitGiGjbDWLvXpkqEAUARirx5EypdLU4H8om7qfIy4t3ERFnvvBksPW5lT9J2EfBIBlKFomJAuWCoTqHkpXArgycc2f4IBNVRPv9pKPJDErlEHA4Kp_63TameCJEXkPwXTJopSxiHkN1754HuktSTYxZGrfraT4e92ASwfmxzUS53DUso1qzIdWysxJ6epxSoaYDjTaBtjHnkUd9-_pfQFCl9bX1eFJ1VlGdQRJP-Uk7CvGytrbaNaMu8rO6w");'>
+                    </div>
+                </div>
+                <div class="flex flex-col justify-center flex-1 min-w-0">
+                    <div class="flex justify-between items-start">
+                        <p class="text-white text-base font-bold leading-tight truncate pr-2">Lo-fi Beats to Study To
+                        </p>
+                        <span
+                            class="text-[10px] font-bold bg-yellow-500/20 text-yellow-400 px-2 py-0.5 rounded-full whitespace-nowrap">85%
+                            Viral</span>
+                    </div>
+                    <p class="text-gray-400 text-sm font-normal leading-normal truncate mt-1">ChilledCow • 1.1M Views
+                    </p>
+                </div>
+                <div class="shrink-0 text-primary opacity-0 group-hover:opacity-100 transition-opacity">
+                    <span class="material-symbols-outlined" style="font-size: 24px;">equalizer</span>
+                </div>
+            </div>
+            <!-- List Item 3 -->
+            <div
+                class="group flex items-center gap-4 bg-surface-dark hover:bg-white/5 rounded-2xl p-3 pr-4 transition-all cursor-pointer border border-transparent hover:border-primary/20">
+                <div class="relative shrink-0">
+                    <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-xl size-16 shadow-lg group-hover:scale-105 transition-transform duration-300"
+                        data-alt="Dark gritty phonk drift car album art"
+                        style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBKg47SoKrMNlGKw-igvpxhgoaxrkgHM8NsI17GQXjhh_8Y_-y_KwCsbmWMgEkCfQMvtlo2suez-m6fQZve3u8Xnn8AjpW_8RD7LMSaPOc23yo2nZd_XSFPvNfv0djqgoHx9XbfzGmfzjwbibdxjRat5if9FGNnYmAs1PkWdqPEzEqVUM3IUerwYVz3c8MDUYqUiCnpcPO_szz9fWa7S-ht_MTjgXWC8rd3k4KHCg1qzKW_eguWUruVUeVyrTChVX-dNEeYTXUETbs");'>
+                    </div>
+                </div>
+                <div class="flex flex-col justify-center flex-1 min-w-0">
+                    <div class="flex justify-between items-start">
+                        <p class="text-white text-base font-bold leading-tight truncate pr-2">Phonk Drift Vol. 2</p>
+                        <span
+                            class="text-[10px] font-bold bg-orange-500/20 text-orange-400 px-2 py-0.5 rounded-full whitespace-nowrap">Trending</span>
+                    </div>
+                    <p class="text-gray-400 text-sm font-normal leading-normal truncate mt-1">Kordhell • 890k Views</p>
+                </div>
+                <div class="shrink-0 text-primary opacity-0 group-hover:opacity-100 transition-opacity">
+                    <span class="material-symbols-outlined" style="font-size: 24px;">equalizer</span>
+                </div>
+            </div>
+        </div>
+        <!-- Settings Section (Bottom) -->
+        <div class="px-4 pb-8 pt-2">
+            <p class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-3 pl-2">Settings</p>
+            <div class="flex flex-col gap-1 rounded-3xl bg-surface-dark overflow-hidden border border-white/5">
+                <a class="flex items-center justify-between p-4 hover:bg-white/5 transition-colors group" href="#">
+                    <div class="flex items-center gap-3">
+                        <div class="size-8 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center">
+                            <span class="material-symbols-outlined" style="font-size: 18px;">person</span>
+                        </div>
+                        <span class="text-white font-medium">Account</span>
+                    </div>
+                    <span class="material-symbols-outlined text-gray-500 group-hover:text-white transition-colors"
+                        style="font-size: 20px;">chevron_right</span>
+                </a>
+                <div class="h-px bg-white/5 mx-4"></div>
+                <a class="flex items-center justify-between p-4 hover:bg-white/5 transition-colors group" href="#">
+                    <div class="flex items-center gap-3">
+                        <div class="size-8 rounded-full bg-primary/20 text-primary flex items-center justify-center">
+                            <span class="material-symbols-outlined" style="font-size: 18px;">notifications</span>
+                        </div>
+                        <span class="text-white font-medium">Notifications</span>
+                    </div>
+                    <span class="material-symbols-outlined text-gray-500 group-hover:text-white transition-colors"
+                        style="font-size: 20px;">chevron_right</span>
+                </a>
+                <div class="h-px bg-white/5 mx-4"></div>
+                <a class="flex items-center justify-between p-4 hover:bg-white/5 transition-colors group" href="#">
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="size-8 rounded-full bg-green-500/20 text-green-400 flex items-center justify-center">
+                            <span class="material-symbols-outlined" style="font-size: 18px;">lock</span>
+                        </div>
+                        <span class="text-white font-medium">Privacy</span>
+                    </div>
+                    <span class="material-symbols-outlined text-gray-500 group-hover:text-white transition-colors"
+                        style="font-size: 20px;">chevron_right</span>
+                </a>
+            </div>
+            <p class="text-center text-gray-600 text-xs mt-6 pb-4">Version 2.4.0 • Hook Inc.</p>
+        </div>
+    </div>
+</body>
+
+</html>
